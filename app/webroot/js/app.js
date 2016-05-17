@@ -69,14 +69,14 @@ jQuery(document).ready(function ($) {
         {
           breakpoint: 778,
           settings: {
-            slidesToShow: 4,
+            slidesToShow: 3,
             slidesToScroll: 1,
           }
         },
         {
           breakpoint: 680,
           settings: {
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
           }
         },
@@ -102,10 +102,121 @@ jQuery(document).ready(function ($) {
 //nav mobile
 
 
-jQuery(document).ready(function ($) {
-    $('.button_number').click(function () {
-        var number = $('.numbers');
-        $(this).addClass('active').html(number);
-         $('.numbers').css("display","block");
+$(document).ready(function() {
+     var menu = document.querySelector(".m_menu");
+    var mob_part = document.querySelector(".mob_part");
+    var close = document.querySelector(".mob_close");
+    var m_sub = document.querySelector(".m_sub");
+  
+
+     $('.m_menu').click(function(e) {
+    var $mob_part = $('.mob_part');
+    if ($mob_part.css('display') != 'block') {
+        $mob_part.animate({height: "show"}  ,"800");}
+    else{
+         $mob_part.animate({height: "hide"},  "800");
+    
+    };
+     });
+     $('.sub').on('click', function(){
+         var $mob_part = $('.mob_part');
+        if(($(this)).siblings('.m_sub_menu').hasClass('sub_show')){
+        $(this).siblings('.m_sub_menu').removeClass('sub_show');    
+        $(this).siblings('.m_sub_menu').animate({height: "hide"},  "800");
+            
+        }else{
+            $(this).siblings('.m_sub_menu').addClass('sub_show');
+             $(this).siblings('.m_sub_menu').animate({height: "show"}  ,"800")
+            
+        }
+        if($(this).parent().siblings().children('.m_sub_menu').hasClass('sub_show')){
+            $(this).parent().siblings().children('.m_sub_menu').removeClass('sub_show');
+              $(this).parent().siblings().children('.m_sub_menu').animate({height: "hide"},  "800");
+        }
+    });
+
+   
+
+});
+
+jQuery(function($){
+    $(document).mouseup(function (e){ // событие клика по веб-документу
+        var div = $(".menu_display "); // тут указываем ID элемента
+        if (!div.is(e.target) // если клик был не по нашему блоку
+            && div.has(e.target).length === 0) { // и не по его дочерним элементам
+            $('.sb').removeClass('sub_show');; // скрываем его
+        }
+    });
+});
+// nav mobile end
+$(document).ready(function() {
+
+     $('.mobile_m__current').click(function(e) {
+    var $mob_phone = $('.mobile_m__list');
+    if ($mob_phone.css('display') != 'block') {
+        $mob_phone.animate({height: "show"}  ,"800");
+    }else{
+         $mob_phone.animate({height: "hide"},  "800");
+    }
+
+    ;
+     });
+  
+
+     $('.lang_m').click(function(e) {
+    var $mob_lang = $('.lang_m__list');
+    if ($mob_lang.css('display') != 'block') {
+        $mob_lang.animate({height: "show"}  ,"800");
+    }else{
+         $mob_lang.animate({height: "hide"},  "800");
+    }
+
+    ;
+     });
+ 
+
+    $('.lang_m__option').click(function () {
+        var optionValue = $(this).data('id');
+        var titleValue = $(this).html();
+        var thisValue = $('.lang_m__current').html();
+        $('.lang_m-select__input').val(optionValue).change();
+        $('.lang_m__current').html(titleValue);
+        // destroy
+        $(this).remove();
+        $('.lang_m__list').append('<div class="lang_m__option"  data-id="">' + thisValue + '</div>');
+            
+   });
+
+
+});
+
+jQuery(function($){
+    $(document).mouseup(function (e){ // событие клика по веб-документу
+        var div = $(".mobile_m__list "); // тут указываем ID элемента
+        if (!div.is(e.target) // если клик был не по нашему блоку
+            && div.has(e.target).length === 0) { // и не по его дочерним элементам
+            $('.sb').removeClass('sub_show');; // скрываем его
+         div.animate({height: "hide"},  "800");
+        }
+    });
+});
+jQuery(function($){
+    $(document).mouseup(function (e){ // событие клика по веб-документу
+        var div = $(".lang_m__list  "); // тут указываем ID элемента
+        if (!div.is(e.target) // если клик был не по нашему блоку
+            && div.has(e.target).length === 0) { // и не по его дочерним элементам
+            $('.sb').removeClass('sub_show');; // скрываем его
+         div.animate({height: "hide"},  "800");
+        }
+    });
+});
+jQuery(function($){
+    $(document).mouseup(function (e){ // событие клика по веб-документу
+        var div = $(".mob_part "); // тут указываем ID элемента
+        if (!div.is(e.target) // если клик был не по нашему блоку
+            && div.has(e.target).length === 0) { // и не по его дочерним элементам
+            $('.sb').removeClass('sub_show');; // скрываем его
+        div.animate({height: "hide"},  "800");
+        }
     });
 });
