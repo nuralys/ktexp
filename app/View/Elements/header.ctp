@@ -73,31 +73,7 @@
 					</li>
 					<li><a href=""> <?=__('Услуги')?> </a></li>
 					<li><a href=""><?=__('Клиентам')?></a></li>
-					<li><a href=""><?=__('Закупки')?></a>
-					<div class="sub_container ">
-						<ul class="sub_menu">
-							<li><a href="/<?=$lang?>page/history"><?=__('АО «KTZ Express» >')?>  </a></li>
-							<li><a href="/<?=$lang?>leaderships"> <?=__('Airport Management Group >')?> </a></li>
-							<li><a href=""> <?=__('KTZ Express Shipping >')?></a>
-								<div class="sub_containers ss">
-									<ul class="sub_menus">
-										<li><a href="/<?=$lang?>purchases/6"><?=__('Годовой план закупок')?>  </a>
-											<div class="sub_containers ss">
-												<ul class="sub_menus">
-													<li><a href="/<?=$lang?>purchases/6"><?=__('Годовой план закупок')?>  </a></li>
-													<li><a href="/<?=$lang?>leaderships"> <?=__('Тендеры')?></a></li>
-													<li><a href=""> <?=__('Ценовые предложения')?></a></li>
-												</ul>
-											</div>
-										</li>
-										<li><a href="/<?=$lang?>leaderships"> <?=__('Тендеры')?></a></li>
-										<li><a href=""> <?=__('Ценовые предложения')?></a></li>
-									</ul>
-								</div>
-							</li>
-						</ul>
-						</div>
-					</li>
+					<?php echo $p_menu; ?>
 					<li><a href=""><?=__('Инвесторам')?> </a></li>
 					<li><a href=""><?=__('Пресс центр')?></a>
 					<div class="sub_container last">

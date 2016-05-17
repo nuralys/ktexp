@@ -7,7 +7,7 @@
 			<a href="" class="more"><span><?= __('Море')?></span></a>
 			<a href="" class="samolet"><span><?= __('Авия')?></span></a>
 			<a href="" class="avto"><span><?= __('Авто')?></span></a>
-			<a href="" class="zhd"><span><?= __('ЖД')?></span></a>
+			<a href="" class="zhd"><span><div><?= __('ЖД')?></div></span></a>
 		</div>
 		<div class="slogan">
 			Lorem Ipsum is simply dummy

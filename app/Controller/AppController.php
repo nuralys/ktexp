@@ -32,7 +32,7 @@ App::uses('Controller', 'Controller', 'CakeEmail', 'Network/Email');
  */
 class AppController extends Controller {
 
-    public $uses = array('App', 'News', 'Partner');
+    public $uses = array('App', 'News', 'Partner', 'Purchase');
 
 	public $components = array('DebugKit.Toolbar', 'Cookie', 'Session', 'Auth' => array(
             'loginRedirect' => '/admin/',
@@ -64,24 +64,47 @@ class AppController extends Controller {
 
         if(isset($this->params['language']) && $this->params['language'] == 'kz'){
             Configure::write('Config.language', 'kz');
+            $this->Purchase->locale = 'kz'; 
         }elseif(isset($this->params['language']) && $this->params['language'] == 'en'){
             Configure::write('Config.language', 'en');
+            $this->Purchase->locale = 'en'; 
         }elseif(isset($this->params['language']) && $this->params['language'] == 'zh'){
             Configure::write('Config.language', 'zh');
+            $this->Purchase->locale = 'zh'; 
         }else{
             Configure::write('Config.language', 'ru');
+            $this->Purchase->locale = 'ru'; 
         }
         // $stol = $this->News->find('all', array(
         //     'conditions' => array('category_id' => 5)
         // ));
-       
+        
+        $this->Purchase->bindTranslation(array('title' => 'titleTranslation'));
         $partners = $this->Partner->find('all');
-
+        $p_tree = $this->Purchase->find('threaded');
+        $p_menu = $this->_catMenuHtml($p_tree);
+        // debug($p_menu);
         // debug($this->request->params);
         // debug($this->params['language']);
         $lang = ($this->params['language']) ? $this->params['language'] . '/' : '';
-        $this->set(compact('admin', 'lang', 'partners'));
+        $this->set(compact('admin', 'lang', 'partners', 'p_menu'));
 
+    }
+
+    protected function _catMenuHtml($service_tree = false){
+        if(!$service_tree) return false;
+        $html = '';
+        foreach ($service_tree as $item) {
+            $html .= $this->_catMenuTemplate($item);
+            
+        }
+        return $html;
+    }
+
+    protected function _catMenuTemplate($p_menu){
+        ob_start();
+        include APP . "View/Elements/purchase_tpl.ctp";
+        return ob_get_clean();
     }
 
 }
